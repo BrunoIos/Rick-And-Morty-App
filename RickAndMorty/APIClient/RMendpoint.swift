@@ -7,8 +7,8 @@
 
 import Foundation
 
-  @frozen enum RMEndpoint: String {
-    case character
-    case location
-    case episode
+  @frozen enum RMEndpoint: String, Codable{
+    case character = "character"
+    case location = "location"
+    case episode = "episode"
 }
