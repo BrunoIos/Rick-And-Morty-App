@@ -34,8 +34,9 @@ final class RMService{
                 return
             }
             do {
-                let json = try JSONSerialization.jsonObject(with: (data))
-                print(String(describing: json))
+                let json = try JSONDecoder().decode(type.self, from: data)
+                completion(.failure(error ?? RMServiceError.failedToGetResponse))
+                return
             }catch{
                 completion(.failure(error))
             }

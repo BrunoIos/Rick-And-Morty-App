@@ -19,9 +19,10 @@ final class RMCharacterViewController: UIViewController {
         )
         print(request.url)
         
-        RMService.shared.execute(request, expecting: RMCharacter.self) {result in
+        RMService.shared.execute(.listCharactersRequests, expecting: RMGetAllCharactersResponse.self) {result in
             switch result {
-            case .success:
+            case .success(let model):
+                print(String(describing: model))
                 break
                 
             case .failure (let error):
